@@ -1,0 +1,299 @@
+@charset "UTF-8";
+
+html {
+    font-size: 100%;
+}
+body {
+    font-family: "나눔고딕",NanumGothic,"맑은고딕",MalgunGodic,"Apple SD Gothic Neo",sans-serif;
+    line-height: 1.7;
+    color: #432;
+}
+a {text-decoration: none;}
+
+img {max-width: 100%;}
+
+.logo{width: 210px; margin-top: 14px;}
+
+.ad{
+    width: 200px;
+}
+.main-nav {
+    display: flex;
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    margin-top: 34px;
+    list-style: none;
+}
+
+.main-nav li{ margin-left: 36px;}
+
+.main-nav a{color: #432;}
+
+.main-nav a:hover{color: #0bd;}
+
+.page-header {display: flex; 
+    justify-content: space-between;}
+
+.wrapper{
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 4%;}
+
+.home-content {
+    text-align: center; 
+    margin-top: 10%;}
+
+.home-content p{
+    font-size:1.125rem; 
+    margin: 10px 0 42px;}
+
+.page-title{
+    font-size:5rem;
+    font-family: 'Philosopher',serif;
+    text-transform: uppercase;
+    font-weight: normal;
+}
+
+.button{
+    font-size: 1.375rem;
+    background: #0bd;
+    color: #fff;
+    border-radius: 5px;
+    padding: 18px 32px;
+}
+.button:hover{ background: #0090aa;}
+
+.big-bg{
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+}
+
+
+#home{
+    background-image: url(../images/main-bg.jpg);
+    
+    /* background-image: url(../images/main-bg.jpg),linear-gradient(#c9ffbf,#ffafbd); */
+    /*background-color: #0bd; background-blend-mode: hard-light;*/
+    /*background-image: linear-gradient(#c9ffbf,#ffafbd);*/
+    background-blend-mode: luminosity;
+    min-height: 100vh;}
+
+#home .page-title{text-transform: none;}
+
+#news{
+    background-image: url(../images/news-bg.jpg);
+   
+    height: 270px;
+    margin-bottom: 40px;                
+}
+#news .page-title{text-align: center; margin: 0;}
+
+.news-contents{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+
+footer{
+    background: #432;
+    text-align: center;
+    padding: 26px 0;
+}
+footer p{
+    color: #fff;
+    font-size: 0.875rem;
+}
+
+article{width: 60%;order: 2;}
+article img{margin-bottom: 20px;}
+article p{margin-bottom: 1rem;}
+aside{width: 22%;order: 3;}
+aside p{padding: 12px 10px;}
+.ad{order: 1;}
+
+.post-info{position: relative;
+    padding-top: 4px;
+    margin-bottom: 40px;
+}
+.post-data{background: #0bd;
+    border-radius: 50%;
+    color: #fff;width: 100px;
+    height: 100px;
+    font-size: 1.625rem;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    padding-top: 10px;}
+.post-data span{font-size: 1rem;
+    border-top: 1px rgba(255,255,255,.5) solid;
+    padding-top: 6px;
+    display: block;
+    width: 60%;
+    margin: 0 auto;}
+.post-title{font-family: "나눔명조",nanummyeongjo,serif;
+    font-size: 2rem;
+    font-weight: nomar;}
+.post-title,
+.post-cat{margin-left: 120px;}
+
+
+.sub-title{font-size: 1.375rem;
+    padding: 0 8px 8px;
+    border-bottom: 2px #0bd solid;
+    font-weight: normal;}
+.sub-menu{margin-bottom: 60px;list-style: none;}
+.sub-menu li{border-bottom: 1px #ddd solid;}
+.sub-menu a{color: #432;padding: 10px;display: block;}
+.sub-menu a:hover{color: #0bd;}
+
+/* -----------------모바일----------------- */
+@media(max-width:600px){
+    .page-title{font-size: 2.5rem;}
+    /* header */
+    .main-nav{font-size: 1rem;margin-top: 10px;}
+    .main-nav li{margin: 0 20px;}
+    /* home */
+    .home-content{margin-top: 20%;}
+    .page-header{flex-direction: column;align-items: center;}
+    /* news */
+    .news-contents{flex-direction: column;}
+    article,
+    aside{will-change: 100%;}
+}
+
+/*--------- menu --------*/
+#menu{
+    background-image: url(../images/menu-bg.jpg);min-height: 100vh;}
+.menu-content{
+    max-width: 560px;
+    margin-top: 10%;}
+.menu-content .page-title{
+    text-align: center;}
+.menu-content p{
+    font-size: 1.125rem;
+    margin: 10px 0 0;}
+
+.grid{
+    display: grid;
+    gap: 26px;
+    grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
+    margin-top: 6%;
+    margin-bottom: 50px;}
+.big-box{
+    grid-column: 1/3;
+    grid-row: 1/3;}
+.big-box img{
+    height: 94%;
+    width: 100%;
+    object-fit: cover;
+}
+@media(max-width:600px){
+    .big-box{
+        grid-column: auto;
+        grid-row: auto;
+    }
+    .big-box img{
+        height: 100%;
+    }
+    #Contact.page-title{
+        margin-top: 40px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea{
+        max-width: 100%;
+    }
+
+    
+#location .wrapper ,
+#sns .wrapper{
+    flex-direction: column;
+}
+.location-info,
+.location-map,
+.sns-box{
+    width: 100%;
+}
+.sns-box{
+    margin-bottom: 30px;
+}
+}   
+
+#Contact{
+    background-image: url(../images/contact-bg.jpg);
+    min-height: 100vh;
+}
+
+form div{
+    margin-bottom: 14px;
+}
+label{
+    font-size: 1.215rem;
+    margin-bottom: 10px;
+    display: block;
+}
+input[type="text"],
+input[type="email"],
+textarea{
+    background:rgba(255,255,255,.5);
+    border:1px #fff solid;
+    border-radius: 5px;
+    padding: 10px;
+    font-size:1rem;
+}
+input[type="text"],
+input[type="email"]{
+    width: 100%;
+    max-width: 240px;
+}
+
+textarea{
+    width: 100%;
+    max-width: 480px;
+    height: 6rem;
+}
+input[tyoe="Sumit"]{
+    border:none;
+    cursor:pointer;
+    line-height: 1;
+}
+
+#location{
+    padding:4% 0;
+}
+
+#location.wrapper{
+    display: flex;
+    justify-content: space-between;
+}
+.location-info{
+    width: 22%;
+}
+.location-info p{
+    padding: 12px 10px;
+}
+.location-map{
+    width: 74%;
+}
+
+iframe{
+
+    width:100%;
+}
+
+#sns{
+    background:#F4F7F0;
+    padding: 4% 0;
+}
+#sns .warpper{
+    display: flex;
+    justify-content: space-between;
+}
+#sns .sub-title{
+    margin-bottom: 30px;
+}
+.sns-box{
+    width: 30%;
+}
