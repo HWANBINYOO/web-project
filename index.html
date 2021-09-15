@@ -5,22 +5,39 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Youtube Mobile</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <script src="main.js" defer></script>
 </head>
 <body>
     <header>
-        <div class="logo">
-            <i class="fab fa-youtube"></i>
-            <span class="title">Youtube</span>
-        </div>
         <div class="icons">
-            <i class="fas fa-search"></i>
-            <i class="fas fa-ellipsis-v"></i>
+            <div class="youtube">
+                <ii class="fas fa-bars"></ii>
+                <i class="fab fa-youtube"></i>
+                <span class="title">Youtube</span>
+            </div>
+            <!-- header 로고들 -->
+            <div class="search">
+                <input type="text" placeholder="검색 ">
+                <i class="fas fa-search"></i>
+                <i class="fas fa-microphone"></i>
+            </div>
+          
+            <i class="fas fa-video"></i>
+            <i class="fas fa-th"></i>
+            <i class="far fa-bell"></i>
+            <i><img src="/image/sintayk.png" alt="" class="pipipi"></i>
         </div>
     </header>
     <section class="player">
         <video controls src="video/sintay.mp4"></video>
     </section>
 
+    <div class="infoAndUpNext">
+        
     <section class="info">
         <div class="metadata">
             <ul class="hashtags">
@@ -29,7 +46,7 @@
                 <li>#파괴의신이닷</li>
             </ul>
             <div class="titleANdButton">
-                <span class="title">
+                <span class="title clamp">
                     clon coding: Youtube noblic Website 유튜브 모바일 웹사이트 따라 만들기 
                     유튜브 모바일 웹사이트 따라 만들기 프론트엔드 개발자 입문편:HTML,CSS,Javascript 드림코딩과 함께해요.
                 </span>
@@ -37,33 +54,63 @@
                     <i class="fas fa-caret-down"></i>
                 </button>
             </div>
-            <div class="views">
-               <span class="views">100M views 1 month age</span> 
-            </div>
         </div>
         <div class="actions">
-           <li><button><i class="fas fa-thumbs-up"></i></button></i></li>
-           <li><button><i class="fas fa-thumbs-down"></i></button></i></li>
-           <li><button><i class="fas fa-share"></i></button></i></li>
-           <li><button><i class="fas fa-plus"></i></button></li>
-           <li><button><i class="fab fa-font-awesome-flag"></i></button></li>
+        <span class="views">조회수 126,367,078회 º 2021.09.14</span> 
+           <li><button><i class="fas fa-thumbs-up"> 1,372,482</i></button></i></li>
+           <li><button><i class="fas fa-thumbs-down"> 9,453,463</i></button></i></li>
+           <li><button><i class="fas fa-share"> 공유</i></button></i></li>
+           <li><button><i class="fas fa-plus"> 저장</i></button></li>
+           <li><button><i class="fas fa-ellipsis-h"></i></i></button></li>
+
         </div>
         <!-- Channel Description -->
         <div class="channel">
             <div class="metadata">
                 <img src="/image/sintayk.png" alt="">
                 <div class="info"><span class="name">신태윤노래방</span>
-                    <span class="subscribers">100M subscribers</span>
+                    <span class="subscribers">구독자 100.5만명</span>
                 </div>
             </div>
-            <button class="subscribe">subscribe</button>
+            <button class="subscribe">구독</button>
         </div>
 
     </section>
     <section class="upNext">
         <span class="title">Up next</span>
-        
+        <ul>
+            <li class="item">
+               <div class="img"><img src="/image/sumnail.png" alt=""></div>
+                <div class="info">
+                    <span class="title">노래강의, 가수가 되고싶다면? 노래 입문자편 강의를 시작합니다 *</span>
+                    <span class="name">드림 by 태윤</span>
+                    <span class="views"> 1000k views</span>
+                </div>
+                <button class="moreBtn"><i class="fas fa-ellipsis-v"></i></button>
+            </li>
+            <li class="item">
+                <div class="img"><img src="image/sgg.jpg" alt=""></div>
+                <div class="info">
+                    <span class="title">광고강의, 광고잘찍고싶다면? 광고 입문자편 강의를 시작합니다 *</span>
+                    <span class="name">광고 by ssg</span>
+                    <span class="views"> 10M views</span>
+                </div>
+                <button class="moreBtn"><i class="fas fa-ellipsis-v"></i></button>
+            </li>
+            <li class="item">
+                <div class="img"> <img src="image/steve.jpg" alt=""></div>
+                <div class="info">
+                    <span class="title">스티브잡스강의, 성공하고싶다면? 연설 입문자편 강의를 시작합니다 *</span>
+                    <span class="name">스비브 잡스 by 스티브</span>
+                    <span class="views"> 100k views</span>
+                </div>
+                <button class="moreBtn"><i class="fas fa-ellipsis-v"></i></button>
+            </li>
+        </ul>
+
+
     </section>
+    </div>
     <script src="https://kit.fontawesome.com/8f4596dd8a.js" crossorigin="anonymous"></script>
 </body>
 </html>
