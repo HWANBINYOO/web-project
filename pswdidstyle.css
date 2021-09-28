@@ -1,0 +1,186 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+            /* 패스워드찾기 */
+/* 맨위 검은 박스 */
+.top{
+    padding: 3px;
+    background-color: rgba(0, 0, 0, 0.685);
+    display: flex;
+    justify-content:space-between;
+}
+.top .one .myguonbo{
+    margin-left: 10px;
+    text-decoration: none;
+        color: rgba(77, 255, 77, 0.767);
+}   
+.top .one .mygounbo2{
+    text-decoration: none;
+    color: white;
+}
+.top .lo{
+    
+    margin-right: 25px;
+    background-color: rgba(0, 0, 0, 0.219);
+    padding: 3px;
+    border-radius: 2px;
+}
+.top .lo a{
+    color: white;
+    font-size: 12px;
+    text-decoration: none;
+}
+
+/* 아이디찾기 비밀번호찾기박스 */
+.header{
+    border: 0.1px solid rgba(0, 0, 0, 0);
+    height: 50px;
+    padding: 20px;
+    background-color:  rgb(33, 190, 33);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.header ul{
+    margin-right: 100px;
+}
+.header ul a{
+    text-decoration: none;
+    margin-right:150px;
+    font-weight: bold;
+}
+.header ul a:hover{
+    color: yellow;
+}
+
+.header .findid{
+    color: white;
+}
+.header .findpswd{
+    color: yellow;
+}
+
+/* 크기지정 */
+.form{
+    height: 500px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    /* background-color:cornsilk; */
+}
+.form .boox{
+    height: 450px;
+    width: 950px;
+    padding-top: 20px;
+    padding-left: 140px;
+    padding-right: 140px;
+}
+
+/* 비밀번호 찾기 순서창 */
+.form .pswdfindtop{
+    justify-content: space-between;
+    margin-top: 10px;
+    display: flex;
+    border-bottom: 1.5px solid;
+}
+.form .pswdtitle{
+    text-decoration: none;
+    color: black;
+    font-size: 15px;
+    font-weight: bold;
+}
+.form .aa{
+    font-size: 12px;
+}
+
+/* 아래설명 */
+.form .dese{
+    padding: 15px;
+    padding-left: 0;
+    display: flex;
+}
+.form .dese a{
+    text-decoration: none;
+    font-size: 11px;
+}
+
+
+/* 아이디입력박스 */
+.form .searchbox{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    border: 0.2px solid black;
+    border-radius: 2px;
+}
+.form .searchbox .textbox{
+    padding: 7px;
+    border-radius: 2px;
+}
+
+/* 다음버튼 */
+.form .dam{
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+}
+.form .dam button{
+    padding: 5px 10px;
+    background-color:white;
+    border: 0.3px solid black;
+    border-radius: 2px;
+}
+.form .dam button:hover{
+    cursor: pointer;
+}
+.form .dese{
+    text-decoration: none;
+}
+
+
+            /* 아이디찾기 */
+
+/* 아이디종류 */
+.form .boox .naverid,
+.form .boox .loginid,
+.form .boox .groupid
+{
+    border: 0.5px solid black;
+    margin: 25px 0 ;
+    width: 670px;
+    height: 90px;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;   
+}
+/* 
+.form .boox .groupid
+{
+flex-direction: column;
+} */
+
+.form .boox .naverid > a,
+.form .boox .loginid > a ,
+.form .boox .groupid > a{
+text-decoration: none;
+color:black;
+font-size: 15px;
+font-weight: bold;
+margin: 10px;
+} 
+
+.form .boox .groupid h6 > a{
+    text-decoration: none;
+    text-decoration: underline;
+}
+.form .boox .groupid h6{
+    position: relative;
+    left: -404px;
+    bottom: -25px;
+}
