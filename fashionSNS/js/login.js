@@ -17,7 +17,7 @@ function mainpage(event){
        
         console.log(idValue.value);
 
-        location.href="/main1-2.html";
+        location.href="/main1-2after.html";
     }
     else{
         idValue.value = '';
@@ -28,24 +28,24 @@ function mainpage(event){
  
 }
 
-function logindone(){
+// function logindone(){
     
-    if(!LOGINING){
-        console.log(LOGINING);
-        CORONA.style.display = "none";
-        NOUSER.style.display = "block";
-        NOLOGIN.style.display = "block";
-    }
-    else{
-        console.log(LOGINING);
-        CORONA.style.display = "";
-        NOUSER.style.display = "none";
-        NOLOGIN.style.display = "none";
-    }
-} 
+//     if(!LOGINING){
+//         console.log(LOGINING);
+//         CORONA.style.display = "none";
+//         NOUSER.style.display = "block";
+//         NOLOGIN.style.display = "block";
+//     }
+//     else{
+//         console.log(LOGINING);
+//         CORONA.style.display = "";
+//         NOUSER.style.display = "none";
+//         NOLOGIN.style.display = "none";
+//     }
+// } 
 
 
-function init(){
-    logindone();
-}
-init();
+// function init(){
+//     logindone();
+// }
+// init();

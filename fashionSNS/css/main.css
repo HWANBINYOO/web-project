@@ -1,15 +1,17 @@
 @font-face {
     src: url("/font/Cafe24Ssurround.ttf");
     font-family: fashionfont;
+    font-family: "Supermercado One";
 }
 
-*{margin: 0; padding: 0;  font-family: fashionfont;;
-}
-a{text-decoration: none;}
-body{   
-    background-color: whitesmoke;
-    
-}
+*{margin: 0; padding: 0;  font-family: fashionfont;}
+a{ text-decoration-line: none; color: black; font-family: 'Supermercado One', cursive;}
+body{background-color: whitesmoke;}
+p{font-family: 'Supermercado One', cursive;}
+h1{ font-family: "Supermercado One";}
+h5{ font-family: "Supermercado One";}
+span{font-family: "Supermercado One";}
+button{font-family: "Supermercado One";}
 .mainwrap{
     background-color: white;
     width: 1520px;
@@ -37,10 +39,13 @@ body{
     align-items: center;
     gap: 50px;
 }
-.headercenter span a{
+.headercenter span{
     width: 57px;
-    height: 27px;
+    /* height: 27px; */
     font-size: 15px;
+    color: white;
+}
+.headercenter span a{
     color: white;
 }
 
@@ -136,12 +141,27 @@ body{
 
 
 .Fashionlogs{
-    padding-top: 5px;
-    border-top: 1px solid #E0DCDC;
-    margin-top: 1px;
+    /* border-bottom: 1px solid #E0DCDC; */
+    display: flex;
+    flex-direction: column;
+    padding: 10px 10px;
+}
+.fashionlogostop{
+    height: 25px;
     display: flex;
     justify-content: space-between;
 }
+.fashionlogosbotton{
+    margin-left: 20px;
+    height: 20px;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+}
+.fashionlogosbotton p{
+    color: gray;
+}
+
 .Fashionlogs  i{
     /* color: linear-gradient(to right,#94DBEC,#BFBBF5); */
     margin: 0 6px;
@@ -169,7 +189,7 @@ body{
 
 
 .logosleft{
-    margin-left: 10px;
+    /* margin-left: 10px; */
     display: flex;
     align-items: center;
 }
@@ -192,9 +212,11 @@ body{
 .profile i{
     color: white;
 }
-.Corona {
-    
+.profile img{
+    width: 25px;
+    border-radius: 50px;
 }
+
 
 
 /* 프로필 */
@@ -219,7 +241,7 @@ body{
     gap: 6px;
     width: 1520px;
     height: 400px;
-    margin: 10px 0 0 0 ;
+    margin: 40px 0 0 0 ;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -229,6 +251,11 @@ body{
 
     font-size: 25px;
 }
+.profilemain img{
+    width: 150px;
+    border-radius: 50%;
+}
+
 .ProfileDecs{
     display: flex;
     flex-direction: column;
@@ -237,7 +264,7 @@ body{
     font-weight: bold;
 }
 .ProfileDecs span{
-    font-family: 'Supermercado One', on
+    font-family: 'Supermercado One', on;
 }
 
 .username{
@@ -270,7 +297,7 @@ body{
     border-right: 1px solid #E0DCDC;
     
 }
-.postsBox span{
+.postsBox >span{
     width: 250px;
     color: black;
     font-size: 40px;
@@ -294,6 +321,10 @@ body{
 
 
 /* 패션 1-2 */
+.loginuser{
+    font-family: "Supermercado One";
+}
+
 .main1-2wrap{
     margin: 0 auto;
     width: 1024px;
@@ -348,9 +379,226 @@ body{
     color: gray;
 }
 
+
+/* 세팅 */
+.settingmain{
+    gap: 6px;
+    width: 1520px;
+    margin: 40px 0 0 0 ;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
 .centents{
-    
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: space-around;
+
 }
 .namecontent{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     border-bottom: 1px solid black;
+    height: 40px;
+}
+.namecontent span{
+    color: gray;
+    font-size: 20px;
+}
+.namecontent input{
+    width: 400px;
+    height: 40px;
+    text-align: center;
+    outline: none;
+    border: none;
+}
+.namecontent input::placeholder{
+    color: black;
+    font-size: 22px;   
+}
+
+.pooter{
+    margin: 50px 0 10px;
+}
+.pooter span{
+    cursor: pointer;
+    color: red;
+}
+.pooter .logout::after{
+    content: " I";
+    color: red;
+}
+
+
+/* 아이디/ 비밀번호 찾기 */
+.findheader{
+    /* width: 150px; */
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.findcentens{
+    width: 1520px;
+    display: flex;
+    justify-content: space-between;
+    /* justify-content: center;
+    flex-direction: column;
+    align-items: center; */
+}
+
+.findcentens span{
+    /* border-bottom: 1px solid #E0DCDC; */
+    text-align: center;
+    width: 755px;
+    font-size: 30px;
+    cursor: pointer;
+}
+.GOfindidpw{
+    border-bottom: 3px solid #E0DCDC;
+    border-color: black;
+}
+.GOsidnup{
+    border-bottom: 3px solid #E0DCDC;
+}
+
+
+.findcentent{
+    margin:  20px 0;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+.findNameEmail{
+    margin: 0px 0;
+    width: 650px;
+    display: flex;
+    justify-content: space-between;
+}
+.findNameEmail input{
+    width: 500px;
+    height: 30px;
+    border-radius: 5px;
+    padding-left: 10px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+}
+.findNameEmail p{
+    font-size: 25px;
+}
+
+
+.idpwfindbtn{
+    margin: 0 0 20px 0;
+    color: black;
+    background-color: white;
+    padding: 7px 15px;
+    border-radius: 30px;
+    font-size: 20px;
+    height: 40px;
+    width: 300px;
+}
+
+
+.maingo{
+    /* font-family: "Supermercado One"; */
+    position: absolute;
+    top: 50px;
+    left: 20px;
+    font-size: 30px;
+}
+/* post */
+.postwrap{
+
+    margin: 20px auto;
+    width: 1024px;
+    /* padding: 0 20px; */
+    /* height: 500px; */
+
+    border-left: 1px solid #E0DCDC;
+    border-right: 1px solid #E0DCDC;
+    display: flex;
+    justify-content:space-between;
+}
+
+
+.posting img{
+    width: 530px;
+}
+.postcentent{
+    padding: 0 10px;
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+}
+.postheader{
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #E0DCDC;
+    justify-content: space-between;
+    margin: 0 10px;
+    height: 50px;
+    gap: 10px;
+}
+.postheader > div{
+    gap: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.postheader img{
+    width: 25px;
+    border-radius: 50%;
+}
+
+.postdecs{
+    padding: 30px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.eval{
+    margin-left: 10px;
+}
+.eval >span{
+    color: gray;
+    font-size: 12px;
+}
+
+.evaluser{
+    border-top: 1px solid #E0DCDC;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0;
+}
+.bonobono { 
+    width: 30px;
+    height: 35px;
+    border-radius: 50%;
+}
+
+.evalusertop{
+    display: flex;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+.evalusertop .evalstar{
+    width: 10px;
+}
+
+.evalusertopright{
+    display: flex;
+    flex-direction: column;
+}
+.comment{
+    font-size: 12px;
 }
