@@ -1,0 +1,671 @@
+*{margin: 0; padding: 0;     font-family: KakaoSmall,Apple SD Gothic Neo,Malgun Gothic,맑은 고딕,sans-serif;         }
+a{text-decoration: none; color: black;}
+li{list-style: none;}
+
+.body{
+    transition: 0.2s ease-in-out;
+}
+
+.ccc{
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+    transition: 0.2s ease-in-out;
+}
+
+/* 헤더 */
+.headerwrap{
+    width: 100%; height: 80px; 
+    
+}
+
+/* background-color: antiquewhite; */
+
+.warp{
+    width: 1300px;
+    height: 2400px;
+    margin: 0 auto;
+}
+.warp2{
+    width: 1300px;
+    height: 800px;
+    margin: 0 auto;
+}
+
+
+.header{
+   
+    transition: 0.2s ease-in-out;
+    z-index: 100;
+    /* background-color: white; */
+    position: fixed;
+    left: 0;
+    right: 0;
+    width: 1300px;
+    height: 75px;
+    margin: 0 auto;
+    padding-left: 100px;
+    padding-right: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header ul{
+    display: flex;
+}
+
+/* .header li::after{
+    content: "l";
+} */
+.header li:last-child::after{
+    content: "";
+}
+
+.header h2{
+    font-weight: 300;
+    font-size: 30px;
+}
+
+.header ul > li > a{
+    margin: 0 25px;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+
+.searchBoxBox {
+    visibility:hidden;
+    
+    width: 1300px;
+    height: 100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items:flex-start;
+
+    transition-delay: 0.1s;
+    transition-duration: 0.6s;
+}
+
+
+/* searchBox */
+.searchBox{
+    /* transition: top 0.2s ease-in-out; */
+    visibility: hidden;
+    /* transition-duration:0.4s; */
+    z-index: 10;
+    background-color: white;
+    width: 1000px;
+    height: 55px;
+    border: 0.1px solid rgb(189, 183, 183);
+    border-radius: 10px;
+    padding-left: 10px;
+    box-shadow: 0.1px 0.1px 3px;
+
+    transition: border-color 0.3s;
+    /* transition-duration: 0.3s; */
+    transition-delay:0.7s;
+    transition: visibility 0.2s ;
+}
+/* .searchBox:hover{
+    box-shadow: 1px 1px 7px;
+} */
+
+.searchBox #value{
+    font-size: 20px;
+    width: 800px;
+    height: 50px;
+    margin: 5px 0px 0px 10px;
+    color: none;
+    border: none;
+    outline: none;
+}
+.searchBox .fa-search{
+    color: gray;
+}
+
+/* 
+#menus > ul {
+    display: flex;
+    align-items: center;
+}
+#menus  */
+
+
+
+
+/* headerlogo */
+.logos i{
+    width: 20px;
+    height: 20px;
+    padding: 10px;
+    text-align: center;
+    margin: 0 2px;
+    border-radius: 50px;
+}
+.logos i:hover {
+    background-color: rgb(218, 218, 218);
+}
+
+.popupmenu{
+    /* background-color: rgba(135, 135, 135, 0.421); */
+    visibility: hidden;
+    display: flex;
+    justify-content: center;
+    z-index: 100;
+    width: 1300px;
+    margin: 0 auto;
+    height: 100px;
+    gap: 100px;
+}
+
+.popupmenu ul{
+    float: left;
+    cursor: pointer;
+    
+}
+.popupmenu li:hover{
+    font-weight: bold;
+    height: 35px;
+}
+
+
+.popupmenu ul li{
+    font-size: 15px;
+   margin: 10px 0;
+}
+
+
+.todaytitle{
+    display: flex;
+    margin-top: 100px;
+    width: 1270px;
+    height: 170px;
+    margin: 0 auto;
+    padding-top: 50px;
+    
+}
+.todaytitle h1{
+    font-size: 40px;
+}
+.todaytitle .fa-calendar{
+    width: 100px;
+    margin-right: 10px;
+}
+
+
+
+
+.todaywarp{
+    /* position: fixed; */
+    display: none;
+    position: relative;
+    z-index: 10;    
+    transition: top 0.2s ease-in-out;
+    width: 100%;
+    height: 75px;
+    background-color: white;
+    border-bottom: 1px solid bl;
+}
+.today{
+    margin: 0 auto;
+    width: 1260px;
+    height: 75px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+} 
+
+
+.mainwarp{
+    margin: 0 auto;
+    width: 1300px;
+    height: 1500px;
+}
+
+
+.contentwarp{
+    /*고치섬*/
+    
+
+    margin: 0 auto;
+ 
+    width: 1300px;
+    height: 1000px;
+margin-bottom: 100px;
+    display: grid;
+    /* gap: 10px 10px; */
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: repeat(8,1fr);
+}
+.contentwarp > div{
+    /* background-color: cadetblue; */
+    /* border: 1px solid black; */
+}
+.content1{
+    grid-row: 1/5;
+}
+.content2{
+    grid-row: 1/3;
+}
+.content4{
+    grid-row: 2/4;
+}
+.content5{
+    grid-column: 2/3;
+    grid-row: 4/6;
+}
+.content6{
+    grid-area:  8 / 2 / 9 / 3;
+}
+.content7{
+    grid-column: 3/4;
+    grid-row: 6/8;
+}
+/* .content8{
+    grid-column: 1/4;
+    grid-row: 8/9;
+} */
+
+
+/* contents */
+.bodo,
+.contitle{
+    padding: 0px 25px 25px 25px;
+    margin-bottom: 0px;
+}
+.bodo{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    display: flex;
+    padding-top: 10px;
+  
+}
+.service,
+.alarm,
+.conwarp {
+    color: rgb(36, 36, 36);
+    background-color: white;
+    margin: 20px 15px 0px 15px; 
+    border-radius: 10px;   
+    box-shadow: 1px 1px 7px  black ;
+    padding-top: 0px;
+}
+.conwarp:hover{
+    transform: translateY(-10px);
+    transition: all 0.2s;
+    box-shadow: 3px 3px 10px black ;
+}
+
+/* con1 */
+.content1 > .conwrap{
+    padding-top: 20px;
+}
+.content1 a h2{
+    font-size: 33px;
+}
+
+.bodo img{
+    width: 10%;
+}
+
+/* con2  */
+.content2 > .conwrap{
+    padding-top: 10px;
+}
+
+.content2  a  img{
+    width: 100%;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    /*고치섬*/
+    position: relative;
+    top: 5px;
+}
+
+/* con3 */
+.content3 > img {
+    width: 50px;
+}
+
+.gugawrap{
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    margin-top: 18px;
+    margin-bottom: 15px;
+    gap: 8px;
+}
+.gugawrap h2{
+    margin-left: 25px;
+    font-weight: 400;
+}
+.gugawrap h5{
+    color: red;
+}
+
+.con3date{
+    padding-bottom: 20px;
+    margin-left: 25px;
+}
+
+
+/* wicon4 */
+.content4  a img{
+    width: 100%;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    position: relative;
+    top: 5px;
+}
+
+
+/* con5 */
+.content5  a img{
+    width: 100%;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    position: relative;
+    top: 5px;
+
+}
+
+
+/* con6 */
+ .content6 .hart {
+    padding: 2px;
+}
+.content6 a h4{
+    margin-left: 10px;
+}
+
+/* con7 */
+.content7 a img{
+    width: 100%;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    position: relative;
+    top: 5px;
+
+}
+
+/* .content8 > img{
+
+} */
+
+
+/* alarm */
+
+/* .alarm_warp{
+    margin: 0 auto;
+    width: 1336px;
+    height: 700px;
+} */
+
+.alarm{
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center; */
+    /*고치섬*/
+    
+    top: 9  00px;
+    height: 400px;
+    width: 1300px;
+    text-align: center;
+    /* margin: 50px 100px 0; */
+    padding: 80px 0px 0;
+}
+
+.alarm h2{
+    font-size: 40px;
+}
+
+.alarm img{
+    margin: 50px 132px 0px;
+    width: 900px;
+    height: 240px;
+}
+
+.services{
+   
+    width:1330px;
+     display: flex;
+     justify-content:center ;
+     gap: 50px;
+}
+.service{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 50px 150px 20px 50px;
+    width: 710px;
+    height: 400px;
+    
+}
+.service h2{
+    font-size: 40px;
+}
+.services  a  i{
+    display: flex;
+    justify-content: end;
+}
+
+
+#serviceyellow{
+    background-color: rgb(231, 231, 125);
+}
+
+#serviceblue{
+    background-color: rgb(99, 99, 230);
+}
+
+.footerwarp{
+    width: 100%;
+    height: 500px;
+   
+    border-top: 0.3px solid rgb(221, 221, 221) ;
+}
+
+.footer{
+    display: flex;
+    justify-content: space-around;
+    width: 1300px;
+    height: 200px;
+    padding: 30px 0;
+    margin: 30px auto;
+    
+    /* background-color:white; */
+}
+.footer span{
+    font-weight: bold;
+}
+.footer span h1{
+    font-size: 18px;
+}
+.footer ul li{
+    margin: 10px 0;
+}
+
+.footer span h1:hover {
+    cursor: pointer;
+    transition: all 0.7s;
+    background-color:yellow;
+}
+.footer ul li{color: gray;}
+.footer ul li:hover{color: black; cursor: pointer;}
+
+.end{
+    display: flex;
+    align-items: end;
+    width: 1300px;
+    height: 100px;
+    margin: 0 auto;
+    
+}
+.end span{
+    margin: 10px;
+}
+
+
+/* jsclass */
+.nav-up { 
+    /* position: relative; */
+    top: -80px;
+}
+.fifi{
+top: 0.1px;
+height: 75px;
+display: block;   
+position: fixed;
+}
+/* .boderunder{
+    border-bottom:1px solid gray;
+} */
+.endend{
+    width: 10px;
+}
+.startstart{
+    width: 400px;
+}
+
+
+.xindex{
+    /* z-index: -1000; */
+    opacity: .9;
+    /* background-color: whitesmoke; */
+}
+
+.gogogo{
+    /* transition-delay: 0.2s; */
+    height: 1px;
+}
+.nonono{
+    /* transition-delay: 0.2s; */
+    height: 200px;
+}
+.upup{
+    /* transition-duration: 0.5s; */
+    transform: translateY(20px);
+    transition: 0.4s;
+}
+.noupup{
+    /* transition-duration: 1s; */
+    transform: translateY(-350px);
+    transition: 0.5s;
+}
+
+
+
+/* 로그인창 */
+.loginBox{
+    box-shadow: 1px 1px 7px  black ;
+    width: 1100px;
+    margin: 0 auto;
+    height: 550px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    padding: 70px 30px;
+    border: 0.1px solid gray;
+    border-radius: 10px;
+}
+
+
+.loginBox > h2{
+    font-size: 55px;
+    font-weight: 400;
+}
+
+.idpw{
+    /* background-color: blanchedalmond; */
+    width: 950px;
+    height: 270px;
+    padding: 20px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.idbox,
+.pwbox{
+    border-bottom: 1px solid rgb(211, 208, 208);
+    
+    background-color: white;
+    width: 850px;
+    height: 80px;
+    margin: 10px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* box-shadow: 1px 1px 5px; */
+    /* border-radius: 5px; */
+    transition-property: border;
+    transition-duration: 0.5s;
+}
+
+.idbox input,
+.pwbox input{
+    /* padding-left: 20px; */
+    width: 800px;
+    height: 50px;
+    font-size: 25px;
+  
+    border: none;
+    outline: none;
+}
+
+
+.suzi{
+    width: 800px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.suzi input{
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+.suzi h5{
+    font-size: 20px;
+}
+
+.loginbtn{
+    width: 950px;
+    height: 100px;
+    padding: 20px 10px;
+    /* background-color: burlywood; */
+    display: flex;
+    justify-content: center;
+}
+.loginbtn button{
+  
+    width: 850px;
+    height: 110px;
+    color: black;
+    border-radius: 10px;
+    font-size: 30px;
+    border: none;
+    background-color: rgb(238, 238, 3);
+    box-shadow: 1px 1px 0.5px gray;
+}
+.loginbtn button:hover{
+    box-shadow: 1px 1px 5px gray;
+}
+
+.tototo{
+    display: flex;
+    align-items: center;
+    height: 100px;
+    padding-left: 80px;
+}
+.tot{
+    margin-left: 30px;
+}
+
+ 
