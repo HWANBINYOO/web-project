@@ -1,0 +1,94 @@
+.headericon{
+    display: flex;
+    justify-content: end;
+}
+
+.headericon .iconList a{
+    padding: 4px;
+    font-size: small;
+    text-decoration: none; 
+    color: black;
+}
+.headericon .iconList a:hover{
+    text-decoration: underline;
+}
+.headericon .iconList .myicon{
+    width: 48px;
+    height: 35px;
+}
+
+.GoogleBox{
+    height: 171px;
+    display: flex;
+    flex-direction: column;
+    justify-content:end;
+    align-items:center;
+}
+
+.search{
+    padding: 20px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+}
+.search .searchBox{
+    width: 512px;
+    height: 46px;
+    border: 0.3px solid gray;
+    border-radius: 30px;
+
+}
+.search .searchBox input{
+    margin-top: 5px;
+    margin-left: 30px;
+    padding: 0;
+    width: 420px;
+    height: 34px;
+    font-size: 16px;
+    border: none;
+    outline: none;
+}
+.search .searchmenu{
+    width: 548px;
+    height: 58px;
+    padding: 5px;
+    margin-top: 30px;
+   
+}
+.search .searchmenu a:hover {
+    border-radius: 3px;
+    border: 1.5px solid rgb(221, 218, 218);
+}
+.search .searcha{
+    display: block;
+    text-align: center;
+}
+.search .searchmenu .searcha a{
+    margin:0px 10px;
+    text-decoration: none;
+    color: black;
+    background-color: #f8f9fa;
+    font-size: 14px;
+}
+
+.nargin{
+    width: 740px;
+    height: 179px;
+}
+.footer,
+.nala{
+    margin: 0px;
+    padding: 15px 30px;
+    background-color: rgba(216, 216, 216, 0.54);;
+}
+.nala a{
+    text-decoration: none;
+    color: rgb(109, 109, 109);
+    font-size: 15px;
+}
+
+.footer .ul .li{
+    list-style: none;
+
+}
