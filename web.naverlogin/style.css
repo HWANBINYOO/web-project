@@ -1,0 +1,131 @@
+*{
+    box-sizing: border-box;
+}
+
+
+.headermargin{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.headermargin > a {
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+
+.headermargin > a > .logo{
+    width: 244px;
+    height: 49px;
+    
+    display:flex;
+    justify-content: center;
+    align-content:space-between;
+}
+.login_box{
+    width: 551px;
+    height: 229px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0 auto;
+    border: 0.3px solid #858886;
+    border-radius: 3px;
+    padding: 24px;
+}
+
+.login_box  .fieldsett {
+    
+    padding: 12px 0px 12px 0px;
+    width: 503px;
+    height: 60px;
+    display: inline-block;
+    border: 0.3px solid #858886;
+    border-radius: 3px;
+}
+
+.login_box  .fieldsett input{
+    border: none;
+    outline: none;
+    display: inline-block;
+    width: 483px;
+    padding-right: 30px;
+}
+.login_box  .fieldsett ::placeholder{
+    font-size: 15px;
+    
+}
+
+
+
+.login_box .loginBtn{
+    display: block;
+    width: 503px;
+    height: 59.6px;
+    border-radius: 6px;
+    border: solid 1px rgba(0,0,0,.15);
+    background-color: #03c75a;
+   margin-top: 10px;
+    cursor: pointer;
+}
+.login_box .PWBox{
+    margin-bottom: 20px;
+}
+
+.login_box .loginBtn a{
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+.findIDPW{
+    display: flex;
+    list-style: none;
+    justify-content: center;
+}
+
+.findIDPW li{
+    padding-right: 10px;
+    font-weight: lighter;
+    font-size: 15px;
+}
+
+.findIDPW li a{
+    text-decoration: none;
+}
+
+.img{
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+}
+.img .bannerimg{
+    margin-top: 5   0px;
+    width: 551px;
+    height: 176px ;
+    border: 0.3px solid #858886;
+    border-radius: 5px;
+}
+
+.gita2{
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    padding-right: 10px;
+    font-weight: lighter;
+    font-size: 12px;
+}
+.gita{
+    margin-top: 50px;
+    display: flex;
+    list-style: none;
+    justify-content: center;
+}
+
+.gita li{
+    padding-right: 10px;
+    font-weight: lighter;
+    font-size: 12px;
+}
+
+
