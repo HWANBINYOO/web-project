@@ -40,9 +40,9 @@ li{
 
 .game-clear{
     position: absolute;
-    font-size: 45px;
-    color:deepskyblue;
-    text-shadow: 1px 1px rgba(0, 0, 0, 50);
+    font-size: 50px;
+    color:rgba(0, 191, 255, 0.26);
+    text-shadow: 1px 1px rgba(0, 0, 0, 20);
     display: none;
 }
 
