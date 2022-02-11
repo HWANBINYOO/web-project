@@ -1,1 +1,1 @@
-###### [링크](https://sintay.netlify.app/)
+## [링크](https://sintay.netlify.app/)
