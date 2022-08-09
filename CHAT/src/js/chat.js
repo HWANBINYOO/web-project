@@ -8,14 +8,23 @@ const chatInput = document.querySelector(".chatting-input");
 const sendButton = document.querySelector(".send-button");
 const displayContainer = document.querySelector(".display-container");
 
-sendButton.addEventListener("click",()=>{
+chatInput.addEventListener("keypress",(event) =>{
+    if(event.keyCode === 13){
+        send()
+        chatInput.value = "";
+    }
+})
+
+function send(){  // 내용 보내는 함수
     const param = {
         name: nickname.value,
         msg: chatInput.value
     }
     socket.emit("chatting" , param);
 
-})
+}
+
+sendButton.addEventListener("click", send)
 
 socket.on("chatting",(data)=>{
     const {name,msg,time} = data
