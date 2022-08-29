@@ -16,18 +16,19 @@ const handleListen = () => console.log(`Listening on http://localhost:3000`);
 const server = http.createServer(app);
 const wss = new WebSocketServer({ server });
 
+const sockets = [];
+
 wss.on("connection", (socket) => {
+    sockets.push(socket);
     console.log("서버에  연결되었습니다 ⚡");
 
-    socket.on("close",()=> console.log("브라우저와 연결이끊어졌습니다. 🔨")); //브라우저 창받을떄
+    socket.on("close",()=> console.log("브라우저와 연결이끊어졌습니다. 🔨")); // 브라우저 창받을떄
 
-    socket.on("message", message => {   // 메세지오면 콘솔출력
-        console.log(message.toString('utf8'));
-    })
+    socket.on("message", (message) => {   // 메세지오면 메세지 보내기
+        sockets.forEach((aSocket) =>  aSocket.send(message.toString()))    // 참가한 모든브라우저 에게 메세지보내기
+    });
 
-    socket.send("hello!!!");    //메세지보내기
 })
-
 
 
 server.listen(3000, handleListen);

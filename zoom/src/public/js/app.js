@@ -1,3 +1,5 @@
+const messageul = document.querySelector("ul");
+const messageForm = document.querySelector("form");
 const socket = new WebSocket(`ws://${window.location.host}`);
 
 socket.addEventListener("open", () =>{
@@ -10,8 +12,13 @@ socket.addEventListener("message", (message) =>{
 
 socket.addEventListener("close",()=>{
     console.log("서버와 연결이끊어졌습니다. 🔨");
-})
+});
 
-setTimeout(() => {  //5초후에 메세지 보내기
-    socket.send("hello from the brower!")
-}, 5000);   
+function handleSubmit(event){
+    event.preventDefault();
+    const input = messageForm.querySelector("input");
+    socket.send(input.value); 
+    input.value = "";
+}
+
+messageForm.addEventListener("submit" , handleSubmit);
