@@ -14,12 +14,11 @@ const httpServer = http.createServer(app);
 const wsServer = new Server(httpServer);
 
 wsServer.on("connection" , (socket) => {
-    socket.emit("enter_room", (msg) => {
-        console.log(msg);
-
+    socket.emit("enter_room", (roomName, done) => {
+        console.log(roomName);
         setTimeout(()=>{
-            done();
-        }, 10000);
+            done("hello from the backend");
+        }, 15000);
 
     });
 });
