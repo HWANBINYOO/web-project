@@ -1,6 +1,6 @@
 import http from "http";
 import { WebSocketServer } from 'ws';
-import express from "express";
+import express, { json } from "express";
 
 const app = express();
 
@@ -20,12 +20,21 @@ const sockets = [];
 
 wss.on("connection", (socket) => {
     sockets.push(socket);
+    socket["nickname"] = "Anon"; // 소캣시작될떄 익명이름설정
     console.log("서버에  연결되었습니다 ⚡");
 
     socket.on("close",()=> console.log("브라우저와 연결이끊어졌습니다. 🔨")); // 브라우저 창받을떄
 
-    socket.on("message", (message) => {   // 메세지오면 메세지 보내기
-        sockets.forEach((aSocket) =>  aSocket.send(message.toString()));    // 참가한 모든브라우저 에게 메세지보내기
+    socket.on("message", (msg) => {   // 메세지오면 메세지 보내기
+        const message = JSON.parse(msg);   // javaScrips object 를 string 으로 바꿔준다.
+
+        switch(message.type){
+            case  "new_message":   // 메세지타입이 올떄
+                sockets.forEach((aSocket) =>  aSocket.send(`${socket.nickname}: ${message.payload}`));    // 참가한 모든브라우저 에게 메세지보내기
+            case "nickname" :       // 이름타입이 올때
+                socket["nickname"] = message.payload;
+        }
+
     });
 
 })

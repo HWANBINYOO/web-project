@@ -5,7 +5,7 @@ const socket = new WebSocket(`ws://${window.location.host}`);
 
 function makeMessage(type, payload){ 
       const msg = {type,payload}
-      return JSON.stringify(msg);
+      return JSON.stringify(msg);  // javaScrips object 를 string 으로 바꿔준다.
 }
 
 
@@ -28,6 +28,7 @@ function handleNickSubmit(event){
     event.preventDefault();
     const input = nickForm.querySelector("input");
     socket.send(makeMessage("nickname" , input.value));
+    input.value = "";
     
 }
 
