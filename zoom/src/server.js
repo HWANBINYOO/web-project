@@ -25,7 +25,7 @@ wss.on("connection", (socket) => {
     socket.on("close",()=> console.log("브라우저와 연결이끊어졌습니다. 🔨")); // 브라우저 창받을떄
 
     socket.on("message", (message) => {   // 메세지오면 메세지 보내기
-        sockets.forEach((aSocket) =>  aSocket.send(message.toString()))    // 참가한 모든브라우저 에게 메세지보내기
+        sockets.forEach((aSocket) =>  aSocket.send(message.toString()));    // 참가한 모든브라우저 에게 메세지보내기
     });
 
 })
