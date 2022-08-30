@@ -1,46 +1,21 @@
-const messageList = document.querySelector("ul");
-const nickForm = document.querySelector("#nick");
-const messageForm = document.querySelector("#message");
-const socket = new WebSocket(`ws://${window.location.host}`);
+const socket = io(); // io = 자동적으로 back-end socket.io 와 연결해주는 함수
 
-function makeMessage(type, payload){ 
-      const msg = {type,payload}
-      return JSON.stringify(msg);  // javaScrips object 를 string 으로 바꿔준다.
+const welcome = document.getElementById("#welcome")
+const form = welcome.querySelector("form");
+
+function backendDone(){
+    console.log("backend done");
 }
 
-
-socket.addEventListener("open", () =>{
-    console.log("서버에 연결되었습니다 ⚡");
-});
-
-socket.addEventListener("message", (message) =>{
-    const li = document.createElement('li');
-    li.innerText = message.data;
-    messageList.append(li);
-});
-
-socket.addEventListener("close",()=>{
-    console.log("서버와 연결이끊어졌습니다. 🔨");
-});
-
-/** 닉네임 submit시 발생하는 함수 */
-function handleNickSubmit(event){
+function handleRoomSubmit(event){
     event.preventDefault();
-    const input = nickForm.querySelector("input");
-    socket.send(makeMessage("nickname" , input.value));
-    input.value = "";
-    
-}
-
-/** 메세지 submit시 발생하는 함수 */
-function handleSubmit(event){
-    event.preventDefault();
-    const input = messageForm.querySelector("input");
-    socket.send(makeMessage("new_message", input.value)); 
+    const input = form.querySelector("input");
+    socket.emit(
+        "enter_room",
+        input.value,
+        backendDone
+    );
     input.value = "";
 }
 
-
-
-nickForm.addEventListener("submit" , handleNickSubmit); 
-messageForm.addEventListener("submit" , handleSubmit);
+form.addEventListener("submit", handleRoomSubmit);
