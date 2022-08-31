@@ -23,7 +23,7 @@ function publicRooms(){
         } 
     });
     return publicRooms;
-}
+};
 
 wsServer.on("connection" , (socket) => {
     socket["nickname"] = "Anon"; 
@@ -31,16 +31,17 @@ wsServer.on("connection" , (socket) => {
         
     socket.on("enter_room", (roomName ,  done) => {   // done = 프론트 함수(ex showRoom)
         socket.join(roomName);    // roomName 방에 참가
-        socket.to(roomName).emit("welcome" , socket.nickname);    // 참여한 방에 Welcome 실행
         done(); // 프론트 함수 실행
+        socket.to(roomName).emit("welcome" , socket.nickname);    // 참여한 방에 Welcome 실행
+        wsServer.sockets.emit("room_change" ,  publicRooms());
     });
     socket.on("disconnecting" , () =>{  // 연결이 끊어지면 그 방에 bye 실행
         socket.rooms.forEach((room) => socket.to(room).emit("bye" , socket.nickname)); 
-    })
+    });
     socket.on("new_message" , (msg, room , done) => {
         socket.to(room).emit("new_message" , `${socket.nickname} : ${msg}`);  // 새로운 메세지를 다른사람도 볼 수 있게   백엔드에서도 new_message 실행
         done();
-    })
+    });
     socket.on("nickname" , nickname => (socket["nickname"] = nickname)) //nickname 을 소캣에 저장
 });
 

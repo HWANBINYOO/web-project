@@ -61,4 +61,6 @@ socket.on("bye", (left) => {    // Welcome
     addMessage(`${left} left ㅠㅠ!`);
 })
 
-socket.on("new_message" , addMessage);  // addMessage ==  (msg) => {addMessage(msg)}
+socket.on("new_message" , addMessage);  // addMessage ==  (msg) => addMessage(msg)
+
+socket.on("room_change" , console.log); // soncole.log = (msg) => console.log(msg))
