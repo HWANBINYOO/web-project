@@ -1,6 +1,6 @@
 import http from "http";
 import { Server } from "socket.io";
-import express, { json } from "express";
+import express from "express";
 
 const app = express();
 
@@ -14,12 +14,12 @@ const httpServer = http.createServer(app);
 const wsServer = new Server(httpServer);
 
 wsServer.on("connection" , (socket) => {
+    socket.onAny((event) =>{
+        console.log(`Socket Event : ${event}`);
+    })
     socket.emit("enter_room", (roomName, done) => {
-        console.log(roomName);
-        setTimeout(()=>{
-            done("hello from the backend");
-        }, 15000);
-
+        socket.join(roomName);    // roomName 방에 참가
+        done();
     });
 });
 
