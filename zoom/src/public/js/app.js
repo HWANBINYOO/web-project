@@ -6,7 +6,14 @@ const room = document.getElementById("room");
 
 room.hidden = true;  //메세지input 창 숨기기
 
-let roomName; 
+let roomName;
+
+function addMessage(message){
+    const ul = room.querySelector("ul");
+    const li = document.createElement("li");
+    li.innerText = message;
+    ul.appendChild(li);
+}
 
 function showRoom(){
     welcome.hidden = true;
@@ -24,3 +31,7 @@ function handleRoomSubmit(event){ // 방이름 입력하면 실행하는 함수
 }
 
 form.addEventListener("submit", handleRoomSubmit);
+
+socket.on("welcome", () => {    // Welcome
+    addMessage("someone joined!");
+})
