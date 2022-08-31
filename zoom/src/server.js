@@ -13,6 +13,18 @@ app.get("/*" , (_, res) => res.redirect("/")); // 다른 url로 이동힐시 / �
 const httpServer = http.createServer(app);
 const wsServer = new Server(httpServer);
 
+function publicRooms(){
+    const {sockets: {adapter: {sides, rooms}}} = wsServer;
+
+    const publicRooms = [];
+    rooms.forEach((_, key) => {
+        if(sides.get(key) === undefined){
+            publicRooms.push(key);
+        } 
+    });
+    return publicRooms;
+}
+
 wsServer.on("connection" , (socket) => {
     socket["nickname"] = "Anon"; 
     socket.onAny((event) => console.log(`Socket Event : ${event}`));  // socket 모든이벤트 출력
