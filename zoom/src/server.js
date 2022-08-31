@@ -1,7 +1,6 @@
 import http from "http";
 import { Server } from "socket.io";
 import express from "express";
-import { nextTick } from "process";
 
 const app = express();
 
@@ -16,13 +15,12 @@ const wsServer = new Server(httpServer);
 
 wsServer.on("connection" , (socket) => {
     socket["nickname"] = "Anon"; 
-    socket.onAny((event) => {   // socket 모든이벤트 출력
-        console.log(`Socket Event : ${event}`);
-    });
-    socket.on("enter_room", (roomName, done) => {   // done = 프론트 함수(ex showRoom)
+    socket.onAny((event) => console.log(`Socket Event : ${event}`));  // socket 모든이벤트 출력
+        
+    socket.on("enter_room", (roomName ,  done) => {   // done = 프론트 함수(ex showRoom)
         socket.join(roomName);    // roomName 방에 참가
-        done(); // 프론트 함수 실행
         socket.to(roomName).emit("welcome" , socket.nickname);    // 참여한 방에 Welcome 실행
+        done(); // 프론트 함수 실행
     });
     socket.on("disconnecting" , () =>{  // 연결이 끊어지면 그 방에 bye 실행
         socket.rooms.forEach((room) => socket.to(room).emit("bye" , socket.nickname)); 
