@@ -64,3 +64,16 @@ socket.on("bye", (left) => {    // Welcome
 socket.on("new_message" , addMessage);  // addMessage ==  (msg) => addMessage(msg)
 
 socket.on("room_change" , console.log); // soncole.log = (msg) => console.log(msg))
+
+socket.on("room_change" , (rooms) => {  // roomEvent
+    const roomList = welcome.querySelector("ul");
+    roomList.innerHTML = "";
+    if(rooms.length === 0){
+        return;
+    }
+    rooms.forEach(room => {
+        const li = document.createElement("li");
+        li.innerText = room;
+        roomList.append(li);
+    });
+});

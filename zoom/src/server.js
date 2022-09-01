@@ -13,12 +13,12 @@ app.get("/*" , (_, res) => res.redirect("/")); // 다른 url로 이동힐시 / �
 const httpServer = http.createServer(app);
 const wsServer = new Server(httpServer);
 
-function publicRooms(){
-    const {sockets: {adapter: {sides, rooms}}} = wsServer;
+function publicRooms(){     // 방수구하는 함수
+    const {sockets: {adapter: {sids, rooms}}} = wsServer;
 
     const publicRooms = [];
     rooms.forEach((_, key) => {
-        if(sides.get(key) === undefined){
+        if(sids.get(key) === undefined){
             publicRooms.push(key);
         } 
     });
@@ -27,17 +27,21 @@ function publicRooms(){
 
 wsServer.on("connection" , (socket) => {
     socket["nickname"] = "Anon"; 
+    wsServer.sockets.emit("room_change" ,  publicRooms()); // 처음 들어갔을떄 방수확인
     socket.onAny((event) => console.log(`Socket Event : ${event}`));  // socket 모든이벤트 출력
         
     socket.on("enter_room", (roomName ,  done) => {   // done = 프론트 함수(ex showRoom)
         socket.join(roomName);    // roomName 방에 참가
         done(); // 프론트 함수 실행
         socket.to(roomName).emit("welcome" , socket.nickname);    // 참여한 방에 Welcome 실행
-        wsServer.sockets.emit("room_change" ,  publicRooms());
+        wsServer.sockets.emit("room_change" ,  publicRooms());     
     });
     socket.on("disconnecting" , () =>{  // 연결이 끊어지면 그 방에 bye 실행
         socket.rooms.forEach((room) => socket.to(room).emit("bye" , socket.nickname)); 
     });
+    socket.on("disconnect", () => {
+        wsServer.sockets.emit("room_change" ,  publicRooms());
+    })
     socket.on("new_message" , (msg, room , done) => {
         socket.to(room).emit("new_message" , `${socket.nickname} : ${msg}`);  // 새로운 메세지를 다른사람도 볼 수 있게   백엔드에서도 new_message 실행
         done();
