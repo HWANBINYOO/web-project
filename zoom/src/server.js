@@ -12,3 +12,7 @@ app.get("/*" , (_, res) => res.redirect("/")); // 다른 url로 이동힐시 / �
 
 const httpServer = http.createServer(app);
 const wsServer = new Server(httpServer);
+
+
+const handleListen = () => console.log(`Listening on http://localhost:3000`);
+httpServer.listen(3000, handleListen);
