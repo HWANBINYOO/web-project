@@ -4,10 +4,15 @@ const myFace = document.getElementById("myFace");
 const muteBtn = document.getElementById("mute");
 const cameraBtn = document.getElementById("camera");
 const camerasSelect = document.getElementById("cameras");
+const call = document.getElementById("call");
+
+call.hiiden = true;
 
 let myStream;
 let muted = false;
 let cameraOff = false;
+let roomName;
+let myPeerConnection;
 
 async function getCameras(){
     try {
@@ -26,7 +31,7 @@ async function getCameras(){
     } catch (e) {
         console.log(e);
     }
-}  
+}
 
 async function getMedia(deviceId){
     const initialConstrains = {     // deviedId 가 없을떄 , cameras 를 만들기 전
@@ -47,8 +52,6 @@ async function getMedia(deviceId){
         console.log(e);
     }
 }
-
-getMedia(); 
 
 function handleMutiClick(){
     myStream
@@ -83,3 +86,48 @@ async function handleCameraChange(){
 muteBtn.addEventListener("click" , handleMutiClick);
 cameraBtn.addEventListener("click" , handleCameraClick);
 camerasSelect.addEventListener("input" , handleCameraChange);
+
+// 처음창
+
+welcome = document.getElementById("welcome");  
+welcomeForm = welcome.querySelector("form");
+
+async  function startMedia(){
+    welcome.hidden = true;
+    call.hidden = false;
+    await getMedia();
+    makeConnection();
+};
+
+function handleWelcomeSubmit(event) {
+    event.preventDefault();
+    const input = welcomeForm.querySelector("input");
+    socket.emit("join_room" , input.value , startMedia);    //서버로 보내기 
+    roomName = input.value;
+    input.value = "";
+};
+
+welcomeForm.addEventListener("submit" , handleWelcomeSubmit);
+
+// Socket Code
+
+socket.on("welcome" , async () => {
+    const offer = await myPeerConnection.createOffer();
+    myPeerConnection.setLocalDescription(offer);
+    console.log("sent the offer");
+    socket.on("offer" , offer , roomName);
+}); 
+
+socket.on("offer" , offer => {
+    myPeerConnection.setRemoteDescription(offer);
+});
+
+// RTC Code 
+
+function makeConnection(){
+    myPeerConnection = new RTCPeerConnection();
+    myStream
+        .getTracks()
+        .forEach((track) => 
+    myPeerConnection.addTrack(track , myStream));
+};
