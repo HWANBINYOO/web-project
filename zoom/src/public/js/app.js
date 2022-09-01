@@ -53,11 +53,15 @@ function handleRoomSubmit(event){ // 방이름 입력하면 실행하는 함수
 
 form.addEventListener("submit", handleRoomSubmit);
 
-socket.on("welcome", (user) => {    // Welcome
+socket.on("welcome", (user , newCount) => {    // Welcome
+    const h3 = room.querySelector("h3");
+    h3.innerText = `Room ${roomName} (${newCount})`;
     addMessage(`${user} arrved!`);
 })
 
-socket.on("bye", (left) => {    // Welcome
+socket.on("bye", (left , newCount) => {    // Welcome
+    const h3 = room.querySelector("h3");
+    h3.innerText = `Room ${roomName}  (${newCount})`;
     addMessage(`${left} left ㅠㅠ!`);
 })
 

@@ -25,6 +25,11 @@ function publicRooms(){     // 방수구하는 함수
     return publicRooms;
 };
 
+function countRoom(roomName){   // 방 갯수 구하는 함수
+    wsServer.sockets.adapter.rooms.get(roomName)?.size;
+}
+
+
 wsServer.on("connection" , (socket) => {
     socket["nickname"] = "Anon"; 
     wsServer.sockets.emit("room_change" ,  publicRooms()); // 처음 들어갔을떄 방수확인
@@ -33,11 +38,11 @@ wsServer.on("connection" , (socket) => {
     socket.on("enter_room", (roomName ,  done) => {   // done = 프론트 함수(ex showRoom)
         socket.join(roomName);    // roomName 방에 참가
         done(); // 프론트 함수 실행
-        socket.to(roomName).emit("welcome" , socket.nickname);    // 참여한 방에 Welcome 실행
+        socket.to(roomName).emit("welcome" , socket.nickname , countRoom(roomName));    // 참여한 방에 Welcome 실행
         wsServer.sockets.emit("room_change" ,  publicRooms());     
     });
     socket.on("disconnecting" , () =>{  // 연결이 끊어지면 그 방에 bye 실행
-        socket.rooms.forEach((room) => socket.to(room).emit("bye" , socket.nickname)); 
+        socket.rooms.forEach((room) => socket.to(room).emit("bye" , socket.nickname , countRoom(room) -1)); 
     });
     socket.on("disconnect", () => {
         wsServer.sockets.emit("room_change" ,  publicRooms());
