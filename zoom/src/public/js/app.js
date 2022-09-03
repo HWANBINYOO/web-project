@@ -81,6 +81,9 @@ function handleCameraClick() {
 
 async function handleCameraChange(){
     await getMedia(camerasSelect.value);
+    if(myPeerConnection){
+        const videoSender = myPeerConnection.getSender().find(sender => sender.track.kind === "video");
+    }
 }
 
 muteBtn.addEventListener("click" , handleMutiClick);
@@ -135,7 +138,7 @@ socket.on("answer" , answer => {
 socket.on("ice" , ice => {
     console.log("received candidate");
     myPeerConnection.addIceCandidate(ice);
-})
+});
 
 
 // RTC Code 
@@ -156,5 +159,5 @@ function handleIce(data){
 
 function handleAddStream(data){
     const peersStream = document.getElementById("peerStream");
-    peersStream.srcObject = data.stream
-}
+    peersStream.srcObject = data.stream;
+};
