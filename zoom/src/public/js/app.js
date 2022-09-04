@@ -81,8 +81,12 @@ function handleCameraClick() {
 
 async function handleCameraChange(){
     await getMedia(camerasSelect.value);
-    if(myPeerConnection){
-        const videoSender = myPeerConnection.getSender().find(sender => sender.track.kind === "video");
+    if(myPeerConnection){      
+        const videoTrack = myStream.getVideoTracks()[0]
+        const videoSender = myPeerConnection
+        .getSender()                            // sender = 우리 peer로 보내진 media stream track을 컨드롤하게 해준다
+        .find(sender => sender.track.kind === "video");
+        videoSender.replaceTrack(videoTrack);    // video track을 받으면 내가 새장치로 업데이트 된 video track을 받도록 해준다.
     }
 }
 
@@ -100,7 +104,7 @@ async  function initCall(){     // 방이름input 없애고 채팅실행해주�
     call.hidden = false;
     await getMedia();  
     makeConnection();
-};
+};  
 
 async function handleWelcomeSubmit(event) { // 방이름input submit 할떄  실행하는 함수
     event.preventDefault();
