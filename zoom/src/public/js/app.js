@@ -16,11 +16,11 @@ let myPeerConnection;
 
 async function getCameras(){
     try {
-        const devices = await navigator.mediaDevices.enumerateDevices();
-        const cameras = devices.filter(device => device.kind === "videoinput");
+        const devices = await navigator.mediaDevices.enumerateDevices();      // 모든 장치 다 가져오기
+        const cameras = devices.filter(device => device.kind === "videoinput"); //  카메라 다 가져오기 
         const currentCamera = myStream.getVideoTracks()[0];
-        cameras.forEach(camera => {
-            const option = document.createElement("option");
+        cameras.forEach(camera => {                             //option 에 카메라 속성을 넣은뒤 추가
+            const option = document.createElement("option");    
             option.value = camera.deviceId;
             option.innerText = camera.label;
             if(currentCamera.label === camera.label){
@@ -38,16 +38,16 @@ async function getMedia(deviceId){  // 카메라,오디오 실행시켜주는 �
         audio:true , 
         video:{facingMode:"user"},
     };
-    const caneraCibstraubts = {
+    const caneraCibstraubts = {     // deviedId 가 있을떄
         audio:true,
         video:{deviceId: { exact: deviceId }} 
     };
     try {
         myStream = await navigator.mediaDevices.getUserMedia(    // 카메라,오디오 가져온다.
-            deviceId? caneraCibstraubts : initialConstrains
+            deviceId? caneraCibstraubts : initialConstrains // deviceId 가 있으면 맞는 디바이스 검색 아니면  전체호출
         ); 
         myFace.srcObject = myStream;
-        getCameras();
+        await getCameras();
     } catch(e) {
         console.log(e);
     }
@@ -55,8 +55,8 @@ async function getMedia(deviceId){  // 카메라,오디오 실행시켜주는 �
 
 function handleMuteClick(){
     myStream
-        .getAudioTracks()
-        .forEach(track => {track.enabled = !track.enabled });
+        .getAudioTracks()   // 오디오 트랙 가져오기
+        .forEach(track => (track.enabled = !track.enabled ));
     if(!muted){
         muteBtn.innerText = "Unmute";
         muted = true;
@@ -68,8 +68,8 @@ function handleMuteClick(){
 
 function handleCameraClick() {
     myStream
-        .getVideoTracks()
-        .forEach(track => {track.enabled = !track.enabled });
+        .getVideoTracks()   // 비디오 트랙 가져오기
+        .forEach(track => (track.enabled = !track.enabled ));
     if (cameraOff) {
       cameraBtn.innerText = "Turn Camera Off";
       cameraOff = false;
@@ -92,7 +92,7 @@ async function handleCameraChange(){
 
 muteBtn.addEventListener("click" , handleMuteClick);
 cameraBtn.addEventListener("click" , handleCameraClick);
-camerasSelect.addEventListener("input" , handleCameraChange);
+camerasSelect.addEventListener("input" , handleCameraChange);   // 카메라 option value 값 변경했을때
 
 // 처음창
 
