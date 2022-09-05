@@ -110,20 +110,20 @@ async function handleWelcomeSubmit(event) { // 방이름input submit 할떄  실
     event.preventDefault();
     const input = welcomeForm.querySelector("input");
     await initCall();
-    socket.emit("join_room" , input.value);    //서버로 보내기 
+    socket.emit("join_room" , input.value);    // 방이름 서버로 보내기 
     roomName = input.value;
     input.value = "";
 };
 
-welcomeForm.addEventListener("submit" , handleWelcomeSubmit);
+welcomeForm.addEventListener("submit" , handleWelcomeSubmit);   // 방이름 input창 submit 이벤트 
 
 // Socket Code
 
-socket.on("welcome" , async () => {
-    const offer = await myPeerConnection.createOffer();
+socket.on("welcome" , async () => { // 방 들어갔을때 
+    const offer = await myPeerConnection.createOffer(); //Brave 브라우저에만 실행된다
     myPeerConnection.setLocalDescription(offer);
     console.log("sent the offer");
-    socket.emit("offer" , offer , roomName);
+    socket.emit("offer" , offer , roomName);    //offer을 Firefox로 보낸다. 
 }); 
 socket.on("offer" , async(offer) => {
     console.log("received the offer");
@@ -147,9 +147,11 @@ socket.on("ice" , ice => {
 
 // RTC Code 
 
+//peer A(brave) 는 offer 를 생성하고 peer B(Firefox) 는 CreateNasxwer를 만든다.
+
 function makeConnection(){
-    myPeerConnection = new RTCPeerConnection({      // 가짜 STUN 서버 만들기 (STUN 서버? = 컴퓨터가 공용IP주소를 찾게 해주는것)
-        iceServers: [
+    myPeerConnection = new RTCPeerConnection({   // 양쪽 Firefox와 brave브라우저에서 peer-to-peer 연결
+        iceServers: [        // 가짜 STUN 서버 만들기 (STUN 서버? = 컴퓨터가 공용IP주소를 찾게 해주는것)
             {
                 urls: [
                     "stun:stun.l.google.com:19302",
