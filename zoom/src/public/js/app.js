@@ -6,7 +6,7 @@ const cameraBtn = document.getElementById("camera");
 const camerasSelect = document.getElementById("cameras");
 const call = document.getElementById("call");
 
-call.hiiden = true;
+call.hidden = true;
 
 let myStream;   // stream = 비디오와 오디오가 결합된것
 let muted = false;
@@ -101,7 +101,7 @@ welcome = document.getElementById("welcome");
 welcomeForm = welcome.querySelector("form");
 
 async  function initCall(){     // 방이름input 없애고 채팅실행해주는 함수
-    welcome.hidden = true;
+    welcome.style.display = "none";
     call.hidden = false;
     await getMedia();  
     makeConnection();
