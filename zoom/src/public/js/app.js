@@ -8,7 +8,7 @@ const call = document.getElementById("call");
 
 call.hiiden = true;
 
-let myStream;
+let myStream;   // stream = 비디오와 오디오가 결합된것
 let muted = false;
 let cameraOff = false;
 let roomName;
@@ -53,15 +53,15 @@ async function getMedia(deviceId){  // 카메라,오디오 실행시켜주는 �
     }
 }
 
-function handleMutiClick(){
+function handleMuteClick(){
     myStream
         .getAudioTracks()
         .forEach(track => {track.enabled = !track.enabled });
     if(!muted){
-        muteBtn.innerText = "Unmute"
+        muteBtn.innerText = "Unmute";
         muted = true;
     } else{
-        muteBtn.innerText = "Mute"
+        muteBtn.innerText = "Mute";
         muted = false;
     }
 }
@@ -90,7 +90,7 @@ async function handleCameraChange(){
     }
 }
 
-muteBtn.addEventListener("click" , handleMutiClick);
+muteBtn.addEventListener("click" , handleMuteClick);
 cameraBtn.addEventListener("click" , handleCameraClick);
 camerasSelect.addEventListener("input" , handleCameraChange);
 
