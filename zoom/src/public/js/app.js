@@ -148,7 +148,19 @@ socket.on("ice" , ice => {
 // RTC Code 
 
 function makeConnection(){
-    myPeerConnection = new RTCPeerConnection();
+    myPeerConnection = new RTCPeerConnection({      // 가짜 STUN 서버 만들기 (STUN 서버? = 컴퓨터가 공용IP주소를 찾게 해주는것)
+        iceServers: [
+            {
+                urls: [
+                    "stun:stun.l.google.com:19302",
+                    "stun:stun1.l.google.com:19302",
+                    "stun:stun2.l.google.com:19302",
+                    "stun:stun3.l.google.com:19302",
+                    "stun:stun4.l.google.com:19302",
+                ],
+            },
+        ],
+    });
     myPeerConnection.addEventListener("icecandidate" , handleIce);  //Ice Candidate = 브라우저가 서로 소통할 수 있게 해주는 방법
     myPeerConnection.addEventListener("addstream" , handleAddStream);
     myStream
