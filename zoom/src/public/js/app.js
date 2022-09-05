@@ -13,6 +13,7 @@ let muted = false;
 let cameraOff = false;
 let roomName;
 let myPeerConnection;
+let myDataChannel;  // Data Channel 생성
 
 async function getCameras(){
     try {
@@ -119,13 +120,20 @@ welcomeForm.addEventListener("submit" , handleWelcomeSubmit);   // 방이름 inp
 
 // Socket Code
 
-socket.on("welcome" , async () => { // 방 들어갔을때 
-    const offer = await myPeerConnection.createOffer(); //Brave 브라우저에만 실행된다
+socket.on("welcome" , async () => { // 방 들어갔을때 (offer을 만드는쪽)
+    myDataChannel = myPeerConnection.createDataChannel("chat"); // 1️⃣먼저 연결되는 peer가 Data Channel을 정의하고 event listener를 추가한다.
+    myDataChannel.addEventListener("message" , console.log);
+    console.log("made data channel");
+    const offer = await myPeerConnection.createOffer(); // Brave 브라우저에만 실행된다
     myPeerConnection.setLocalDescription(offer);
     console.log("sent the offer");
-    socket.emit("offer" , offer , roomName);    //offer을 Firefox로 보낸다. 
+    socket.emit("offer" , offer , roomName);    // offer을 Firefox로 보낸다. 
 }); 
-socket.on("offer" , async(offer) => {
+socket.on("offer" , async(offer) => {  // (offer를 받는쪽)
+    myPeerConnection.addEventListener("datachannel" , (event) => {
+        myDataChannel = event.channel;  // 2️⃣두번쨰 peer는 여기서 Data Channel을 정의한다
+        myDataChannel.addEventListener("message" , console.log);
+    });
     console.log("received the offer");
     myPeerConnection.setRemoteDescription(offer);
     const answer = await myPeerConnection.createAnswer();
