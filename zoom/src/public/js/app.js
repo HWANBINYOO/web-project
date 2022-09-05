@@ -174,6 +174,6 @@ function handleIce(data){
 };
 
 function handleAddStream(data){
-    const peersStream = document.getElementById("peerStream");
+    const peersStream = document.getElementById("peerFace");    // 2번쨰 카메라
     peersStream.srcObject = data.stream;
 };
