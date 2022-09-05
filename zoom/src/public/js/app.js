@@ -130,7 +130,7 @@ socket.on("offer" , async(offer) => {
     myPeerConnection.setRemoteDescription(offer);
     const answer = await myPeerConnection.createAnswer();
     myPeerConnection.setLocalDescription(answer);
-    socket.emit("answer" , answer , roomName);
+    socket.emit("answer" , answer , roomName);  
     console.log("sent the answer");
 });
 
@@ -149,7 +149,7 @@ socket.on("ice" , ice => {
 
 //peer A(brave) 는 offer 를 생성하고 peer B(Firefox) 는 CreateNasxwer를 만든다.
 
-function makeConnection(){
+function makeConnection(){  // track들을 개별적으로추가해주는 함수
     myPeerConnection = new RTCPeerConnection({   // 양쪽 Firefox와 brave브라우저에서 peer-to-peer 연결
         iceServers: [        // 가짜 STUN 서버 만들기 (STUN 서버? = 컴퓨터가 공용IP주소를 찾게 해주는것)
             {
@@ -163,19 +163,20 @@ function makeConnection(){
             },
         ],
     });
-    myPeerConnection.addEventListener("icecandidate" , handleIce);  //Ice Candidate = 브라우저가 서로 소통할 수 있게 해주는 방법
+    myPeerConnection.addEventListener("icecandidate" , handleIce); // offer 와 answer 받는걸 모두 끝냈을때 양쪽에서 icecandidate이벤트를 실행한다. 
+                                                                   //Ice Candidate = 브라우저가 서로 소통할 수 있게 해주는 방법
     myPeerConnection.addEventListener("addstream" , handleAddStream);
     myStream
         .getTracks()
         .forEach((track) => myPeerConnection.addTrack(track , myStream));
 };
 
-function handleIce(data){
+function handleIce(data){   
     console.log("sent candidate");
     socket.emit("ice" , data.candidate , roomName); 
 };
 
-function handleAddStream(data){
+function handleAddStream(data){ // 상대 stream 을 2번쨰 비디오에 추가
     const peersStream = document.getElementById("peerFace");    // 2번쨰 카메라
     peersStream.srcObject = data.stream;
 };
