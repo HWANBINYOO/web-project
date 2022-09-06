@@ -6,6 +6,9 @@ const cameraBtn = document.getElementById("camera");
 const camerasSelect = document.getElementById("cameras");
 const call = document.getElementById("call");
 
+const chatBox  = document.getElementById("form");
+const chatInput = chatBox.querySelector("input");
+
 call.hidden = true;
 
 let myStream;   // stream = 비디오와 오디오가 결합된것
@@ -14,6 +17,29 @@ let cameraOff = false;
 let roomName;
 let myPeerConnection;
 let myDataChannel;  // Data Channel 생성
+
+function addChatMessage(message) {  // 메세지 받을떄 추가 하기
+    const ul = chatBox.querySelector("ul");
+    const li = document.createElement("li");
+
+    li.innerText = message;
+    ul.appendChild(li);
+    chatInput.value = "";
+};
+
+chatBox.addEventListener("submit" , (event)  => {   // form submit 함수
+    event.preventDefault();
+    const message = chatInput.value;
+    console.log(chatInput.value);
+    // Peer A에 나타나는 코드
+    addChatMessage(`나 : ${message}`);
+    // Peer B 브라우저에 나타나는 코드. data channel로 연결되어 있다면 send메소드로 다른 브라우저에 메시지 보내기. 
+    if (myDataChannel) { 
+        myDataChannel.send(`상대방 : ${message}`);
+    }
+});
+
+
 
 async function getCameras(){
     try {
@@ -122,7 +148,9 @@ welcomeForm.addEventListener("submit" , handleWelcomeSubmit);   // 방이름 inp
 
 socket.on("welcome" , async () => { // 방 들어갔을때 (offer을 만드는쪽)
     myDataChannel = myPeerConnection.createDataChannel("chat"); // 1️⃣먼저 연결되는 peer가 Data Channel을 정의하고 event listener를 추가한다.
-    myDataChannel.addEventListener("message" , console.log);
+    myDataChannel.addEventListener("message" , (event) => {
+        addChatMessage(event.data);
+    });
     console.log("made data channel");
     const offer = await myPeerConnection.createOffer(); // Brave 브라우저에만 실행된다
     myPeerConnection.setLocalDescription(offer);
@@ -132,7 +160,9 @@ socket.on("welcome" , async () => { // 방 들어갔을때 (offer을 만드는�
 socket.on("offer" , async(offer) => {  // (offer를 받는쪽)
     myPeerConnection.addEventListener("datachannel" , (event) => {
         myDataChannel = event.channel;  // 2️⃣두번쨰 peer는 여기서 Data Channel을 정의한다
-        myDataChannel.addEventListener("message" , console.log);
+        myDataChannel.addEventListener("message" , (event) => {
+            addChatMessage(event.data);
+        });
     });
     console.log("received the offer");
     myPeerConnection.setRemoteDescription(offer);

@@ -18,10 +18,15 @@ html(lang="en")
             div#call
                 div#myStream
                     video#myFace(autoplay , playsinline , muted , width="400" , height="400") // playsinline = 모바일 브라우저가 필요로 하는 property 
+                div 
+                    form#form
+                        input(type="text" , placeholder="내용을 입력하세요" )
+                        ul
                     button#mute Mute
                     button#camera Turn Camera Off
                     select#cameras
                 div#peerStream
                     video#peerFace(autoplay , playsinline , muted , width="400" , height="400") 
+               
         script(src="/socket.io/socket.io.js") 
         script(src="/public/js/app.js") 
