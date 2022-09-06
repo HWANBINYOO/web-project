@@ -5,11 +5,14 @@ const muteBtn = document.getElementById("mute");
 const cameraBtn = document.getElementById("camera");
 const camerasSelect = document.getElementById("cameras");
 const call = document.getElementById("call");
+const btns = document.getElementById("btnDiv");
 
 const chatBox  = document.getElementById("form");
 const chatInput = chatBox.querySelector("input");
 
-call.hidden = true;
+call.style.display = "none";
+chatBox.style.display = "none";
+btns.style.display = "none";
 
 let myStream;   // stream = 비디오와 오디오가 결합된것
 let muted = false;
@@ -128,7 +131,9 @@ welcomeForm = welcome.querySelector("form");
 
 async  function initCall(){     // 방이름input 없애고 채팅실행해주는 함수
     welcome.style.display = "none";
-    call.hidden = false;
+    chatBox.style.display = "block";
+    call.style.display = "block";
+    btns.style.display = "block";
     await getMedia();  
     makeConnection();
 };  

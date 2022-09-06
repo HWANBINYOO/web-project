@@ -1,6 +1,20 @@
+html,
 body {
-    background-color: rgb(242, 242, 242);
+  padding: 0;
+  margin: 0;
+  font-family: 'EarlyFontDiary';
+  background-color: rgb(242, 242, 242);
 }
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+ 
 
 
 button {
@@ -9,9 +23,11 @@ button {
 }
 
 main {
+    width: 90vw !important;
+    max-width: 100vw !important;
     display: flex;
     justify-content: center;
-    padding: 0;
+    flex-direction: column;
 }
 
 #welcome {
@@ -29,20 +45,54 @@ main {
     margin: 8px;
 }
 
-#myStrem {
+
+#call {
+    width: 100%;
+    height: 450px;
+    margin: 0 auto;
+    display: flex !important;
+    justify-content: center;
+    gap: 50px;
+}
+
+#call #myStream {
+    width: 350%;
     display: flex;
+    align-items: flex-start ;
+    justify-content: center;
 }
 
-#myStrem>video {
-    margin: 20px;
+#call #myStream {
+    width: 35%;
+    display: flex;
+    align-items: flex-start ;
+    justify-content: center;
 }
 
-/* 내 비디오에 대한 영상 설정 */
-
-#myFace > button{
-    width: 30%;
-
+#call #chatBox {
+    padding-top: 20px;
+    width: 20%;
+    height: 400px;
+    overflow-y:auto;
+    overflow-x: none !important;
 }
+
+#call #chatBox #form{
+    border: none !important;
+    padding: none !important;
+    margin: none !important;
+    white-space:nowrap;
+}
+
+#call #chatBox #form input{
+    padding: none !important;
+    margin: none !important;
+}
+
+
+
+
+
 
 /* peer 비디오에 대한 영상 설정 */
 
@@ -50,4 +100,21 @@ main {
     background-image: url("/public/video_loading.gif");
     background-repeat: no-repeat;
     background-position: center
+}
+
+
+#btnDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 auto;
+    gap: 100px;
+}
+
+#btnDiv > button {
+    width: 200px !important;
+    height: 50px;
+    padding: 0 30px !important;
+    font-size: 1rem;
 }
