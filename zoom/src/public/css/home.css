@@ -18,8 +18,8 @@ a {
 
 
 button {
-    border: rgb(241, 153, 56) !important;
-    background-color: rgb(241, 153, 56) !important;
+    border: #7089c4 !important;
+    background-color: #7089c4 !important;
 }
 
 main {
@@ -56,14 +56,14 @@ main {
 }
 
 #call #myStream {
-    width: 350%;
+    width: 40% !important;
     display: flex;
     align-items: flex-start ;
     justify-content: center;
 }
 
 #call #myStream {
-    width: 35%;
+    width: 40% !important;
     display: flex;
     align-items: flex-start ;
     justify-content: center;
@@ -85,8 +85,9 @@ main {
 }
 
 #call #chatBox #form input{
-    padding: none !important;
+    padding: 10px 20px !important;
     margin: none !important;
+    border-radius: 5px;
 }
 
 
